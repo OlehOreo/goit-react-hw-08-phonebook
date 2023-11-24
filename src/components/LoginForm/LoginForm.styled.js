@@ -4,7 +4,7 @@ import { Form, ErrorMessage, Field } from 'formik';
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-
+  align-items: center;
   gap: ${prop => prop.theme.spacing(5)};
 `;
 
@@ -63,7 +63,7 @@ export const ErrMessage = styled(ErrorMessage)`
   line-height: 1.21;
   letter-spacing: 0.09em;
 `;
-export const BtnAddContact = styled.button`
+export const Btn = styled.button`
   display: inline-block;
   padding: 15px 25px;
   font-size: 24px;

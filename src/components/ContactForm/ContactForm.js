@@ -44,8 +44,10 @@ export const ContactForm = () => {
 
   const dispatch = useDispatch();
   const contacts = useSelector(selectorContacts);
+ 
 
   const handlerAddContact = (fieldValue, form) => {
+   
     const contactCheck = contacts.find(contact => {
       return (
         contact.name.toLocaleLowerCase() ===

@@ -12,6 +12,15 @@ const contactsInitialState = {
   error: null,
 };
 
+// const handlePending = state => {
+//   state.isLoading = true;
+// };
+
+// const handleRejected = (state, action) => {
+//   state.isLoading = false;
+//   state.error = action.payload;
+// };
+
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: contactsInitialState,
@@ -25,7 +34,7 @@ const contactsSlice = createSlice({
       .addCase(fetchContacts.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.userContacts = payload;
-        state.error = null;
+        // state.error = null;
       })
       .addCase(fetchContacts.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -38,7 +47,7 @@ const contactsSlice = createSlice({
       .addCase(addContact.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.userContacts.unshift(payload);
-        state.error = null;
+        // state.error = null;
       })
       .addCase(addContact.rejected, (state, { payload }) => {
         state.isLoading = false;
@@ -52,6 +61,7 @@ const contactsSlice = createSlice({
         state.isLoading = false;
         state.userContacts = state.userContacts.filter(
           ({ id }) => id !== payload
+          // можливо тут payload.id
         );
       })
       .addCase(deleteContact.rejected, (state, { payload }) => {

@@ -3,7 +3,8 @@ import Loading from 'components/Loading/Loading';
 import { Message } from 'components/Notiflix/Message';
 import { useEffect, useState } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContacts } from 'redux/contactOperations';
 
 import {
   selectorContacts,
@@ -20,16 +21,22 @@ export const Contacts = () => {
   const filter = useSelector(getSearchResults);
   const error = useSelector(selectorError);
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
   useEffect(() => {
     if (contacts.length !== 0) {
       setContactLoaded(true);
     }
   }, [contacts]);
-  const filteredContacts = contacts.filter(({ name, phone }) => {
+  const filteredContacts = contacts.filter(({ name, number }) => {
     if (filter.length > 0) {
       return (
         name.toLowerCase().includes(filter.toLowerCase()) ||
-        phone.replace(/\D/g, '').includes(filter)
+        number.replace(/\D/g, '').includes(filter)
       );
     }
 

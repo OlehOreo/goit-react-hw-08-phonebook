@@ -24,6 +24,7 @@ export const addContact = createAsyncThunk(
       const contact = await postContact(data);
       return contact;
     } catch (error) {
+      console.log(error);
       return rejectWithValue(error.message);
     }
   }

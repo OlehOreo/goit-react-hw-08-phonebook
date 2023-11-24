@@ -4,7 +4,7 @@ import { Wrapper, Phone, BtnDelete, ContactInfo } from './ContactsItem.styled';
 import { deleteContact } from 'redux/contactOperations';
 import NotiflixConfig from 'components/Notiflix/NotiflixConfig';
 
-export const ContactsItem = ({ contact: { name, phone, id } }) => {
+export const ContactsItem = ({ contact: { name, number, id } }) => {
   const dispatch = useDispatch();
   const handleDelete = () => {
     dispatch(deleteContact(id));
@@ -16,7 +16,7 @@ export const ContactsItem = ({ contact: { name, phone, id } }) => {
   return (
     <Wrapper>
       <ContactInfo>
-        {name} : <Phone> +38 {phone}</Phone>
+        {name} : <Phone> {number}</Phone>
       </ContactInfo>
       <BtnDelete type="button" onClick={handleDelete}>
         Delete

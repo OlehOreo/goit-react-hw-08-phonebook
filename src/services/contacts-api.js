@@ -1,18 +1,17 @@
-import axios from 'axios';
-
-axios.defaults.baseURL = 'https://6557470bbd4bcef8b6125eb7.mockapi.io';
+import { instance } from 'redux/auth/operations';
 
 export async function getContacts() {
-  const { data } = await axios.get('/contacts');
+  const { data } = await instance.get('/contacts');
   return data;
 }
 
 export async function postContact(contactData) {
-  const { data } = await axios.post('/contacts', contactData);
+  const { data } = await instance.post('/contacts', contactData);
+
   return data;
 }
 
 export async function fetchDeleteContact(contactId) {
-  const { data } = await axios.delete(`/contacts/${contactId}`);
+  const { data } = await instance.delete(`/contacts/${contactId}`);
   return data;
 }
